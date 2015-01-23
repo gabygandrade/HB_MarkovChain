@@ -27,19 +27,28 @@ def make_text(chains):
     new_string = ""
     # pick a key
     current_tuple = r_choice(chains.keys())
+
     while current_tuple in chains.keys():
         first_word = current_tuple[0]
-        # print "first word is: ", first_word
         second_word = current_tuple[1]
-        # print "second word is: ", second_word
         third_word = r_choice(chains.get(current_tuple))
-        # print "third word is: ", third_word
 
-        new_string = new_string + " " + first_word + " " + second_word + " " + third_word
-        # print "new string is: ",new_string
+        if len(new_string + first_word) > 139:
+            break 
+        new_string = new_string + " " + first_word
+        if len(new_string + second_word) > 139: 
+            break 
+        new_string = new_string + " " + second_word
+        if len(new_string+ third_word) > 139: 
+            break
+        new_string = new_string + " " + third_word
+
         current_tuple = (second_word, third_word)
-    
+
+
+    print len(new_string)
     return new_string
+
     # From the first and second word, find third word 
     # - which is randomly picked from value_list 
     # associated with the current (first word, second word) tuple key 
@@ -47,14 +56,18 @@ def make_text(chains):
     # while this tuple is in the set of 
     # turn string generator into a loop to create new word combinations
 
+def check_char_len(text):
+    # if len(new_string) <= 140:
+
+    return len
+
 def main():
     script, filename = argv
 
     open_file = open(filename)
     input_text = open_file.read().split()
-
-    # convert text into dictionary of tuple keys and list values
-    chain_dict = make_chains(input_text)
+    # print input_text
+    chain_dict = make_chains(input_text)    # convert text into dictionary of tuple keys and list values
     # print chain_dict
     # feed dictionary into text generator
     random_text = make_text(chain_dict)
