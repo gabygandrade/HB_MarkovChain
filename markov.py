@@ -28,22 +28,6 @@ def make_text(chains):
     # pick a key
     current_tuple = r_choice(chains.keys())
 
-    # while current_tuple in chains.keys():
-    #     first_word = current_tuple[0]
-    #     second_word = current_tuple[1]
-    #     third_word = r_choice(chains.get(current_tuple))
-
-    #     if len(new_string + first_word) > 139:
-    #         break 
-    #     new_string = new_string + " " + first_word
-    #     if len(new_string + second_word) > 139: 
-    #         break 
-    #     new_string = new_string + " " + second_word
-    #     if len(new_string+ third_word) > 139: 
-    #         break
-    #     new_string = new_string + " " + third_word
-
-    #     current_tuple = (second_word, third_word)
     while current_tuple in chains.keys():
         first_word = current_tuple[0]
         second_word = current_tuple[1]
@@ -58,13 +42,11 @@ def make_text(chains):
         if len(new_string+ third_word) > 139: 
             break
 
-
-            
         new_string = new_string + " " + third_word
 
         current_tuple = (second_word, third_word)
 
-    print len(new_string)
+    # print len(new_string)
     return new_string
 
 def main():
@@ -81,12 +63,11 @@ def main():
     # print chain_dict
     # feed dictionary into text generator
     random_text = make_text(chain_dict)
-    print random_text
+    return random_text
 
 if __name__ == "__main__":
     main()
 
-# works!  but makes one giant wall of text. needs more work to refine output.
 
 """
 Extra Credit

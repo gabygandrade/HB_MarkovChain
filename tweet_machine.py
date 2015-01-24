@@ -12,4 +12,7 @@ api = twitter.Api(consumer_key=TWITTER_CONSUMER_KEY,
                     access_token_key=TWITTER_ACCESS_TOKEN,
                     access_token_secret=TWITTER_ACCESS_SECRET)
 
-status = api.PostUpdate(main())
+tweet_string = main()
+status = api.PostUpdate(tweet_string)
+print tweet_string
+print status
